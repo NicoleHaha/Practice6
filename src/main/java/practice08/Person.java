@@ -35,5 +35,15 @@ public class Person {
         String result = "My name is "+this.name+". I am "+this.age+ " years old.";
         return result;
     }
-
+    public boolean equals(Object obj){
+        Boolean flag = false;
+        if(obj instanceof Person){
+            Person p = (Person) obj;
+            if(p.getId() == ((Person)obj).getId()){
+                flag = true;
+            }
+            else flag = false;
+        }
+        return flag;
+    }
 }

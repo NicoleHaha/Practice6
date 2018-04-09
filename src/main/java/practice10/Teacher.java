@@ -2,6 +2,8 @@ package practice10;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Teacher extends Person {
     private Klass klass;
@@ -35,20 +37,20 @@ public class Teacher extends Person {
         }
         else {
             String str = new String();
+            int i = 0;
+            int[] a = new int[2];
+            String[] temp = new String[2];
             for(Klass klass:classes){
-                str += klass.getNumber() + " ";
+                a[i] = klass.getNumber();
+                i++;
             }
-            String[] temp = str.split("\\ ");
-            str = "";
-            for (int i = 0; i < temp.length ; i++) {
-                if (temp[i]!= null) {
-                    str += temp[i];
-                    if(i<temp.length-1){
-                        str += ", ";
-                    }
-                }
+            if (a[0] > a[1]) {
+                i = a[0];
+                a[0] = a[1];
+                a[1] = i;
             }
-            result = " I am a Teacher. I teach Class "+str+".";
+
+            result = " I am a Teacher. I teach Class "+a[0] +", " + a[1]+".";
         }
 
         return super.introduce()+result;
